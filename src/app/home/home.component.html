@@ -1,0 +1,27 @@
+<div id="global">
+  <div class="product-list">
+    <div class="product" *ngFor="let produit of produits">
+      <img [src]="produit.image" alt="{{ produit.nom }}" />
+      <h3>{{ produit.nom }}</h3>
+      <p>{{ produit.prixHT }} €</p>
+      <button (click)="ajouterAuPanier(produit)">Ajouter au panier</button>
+    </div>
+  </div>
+
+  <div class="panier">
+    <h2>Panier</h2>
+    <ul>
+      <li *ngFor="let produit of panier">
+        {{ produit.nom }} ({{ produit.quantite }})
+        <button (click)="modifierQuantite(produit, produit.quantite - 1)">
+          -
+        </button>
+        <button (click)="modifierQuantite(produit, produit.quantite + 1)">
+          +
+        </button>
+      </li>
+    </ul>
+    <p>Total HT: {{ totalHT }} €</p>
+    <p>Total TTC: {{ totalTTC }} €</p>
+  </div>
+</div>
